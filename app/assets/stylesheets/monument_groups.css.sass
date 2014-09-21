@@ -7,7 +7,7 @@
   a.active
     color: black
 
-.task-list
+.monument-list
   .list-name
     font-weight: bold
     font-size: 20px
@@ -16,7 +16,7 @@
     padding-top: 15px
     padding-bottom: 15px
 
-form#new_task  
+form#new_monument  
   .form-control:focus
     z-index: 2
 
@@ -37,11 +37,11 @@ form#new_task
     cursor: move
 
   &.completed
-    .task-description span
+    .monument-description span
       color: #a9a9a9
       text-decoration: line-through
 
-  .task-description
+  .monument-description
     cursor: text
     &, div, form, input
       display: inline
@@ -52,18 +52,18 @@ form#new_task
       padding: 10px
       line-height: 2.45em
 
-  .task-buttons
+  .monument-buttons
     margin-top: 5px
     .calendar-button
       display: inline-block
       button
         margin-right: 10px
 
-  .task-completed
+  .monument-completed
     display: inline-block
     vertical-align: top
     margin-top: 7px
 
-  .task-due-date
+  .monument-due-date
     line-height: 1
     color: #a9a9a9
