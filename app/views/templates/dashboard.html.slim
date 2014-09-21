@@ -2,21 +2,20 @@
 
   div.panel.panel-default.dashboard-list
     div.panel-heading
-      h4 Your lists
+      h4 Your Monument Collections
     ul.list-group(ng-show="groups == 0")
       li.list-group-item
-        ' You haven't created any monument groups yet.
+        ' You haven't created any monument collections yet.
     ul.list-group
       li.list-group-item(ng-repeat="group in groups")
         button.btn.btn-danger.btn-xs.pull-right(type="button" ng-click="deleteGroup(group, $index)")
           span.glyphicon.glyphicon-ban-circle
         a(href="/monument_groups/{{group.id}}")
-          ' {{group.name}} ({{group.monuments.length}})
+          ' {{group.name}}
+          /({{group.monuments.length}})
 
   form#new_group(ng-submit="createGroup(groupName)")
     .input-group
       input#groupDescription.form-control.input-lg(type="text" autofocus="autofocus" placeholder="Group name" maxlength="255" ng-model="groupName" data-non-blank)
       span.input-group-btn
         button.btn.btn-primary.btn-lg(type="submit") create group
-
-  

@@ -1,4 +1,3 @@
-console.log('loading...')
 angular.module('monumentsApp').controller "DashboardCtrl", ($scope, $routeParams, $location, MonumentGroup) ->
 
   $scope.init = ->

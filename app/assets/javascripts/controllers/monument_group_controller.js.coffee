@@ -1,18 +1,22 @@
-angular.module('monumentsApp').controller "MonumentGroupCtrl", ($scope, $timeout, $routeParams, MonumentGroup) ->
+angular.module('monumentsApp').controller "MonumentGroupCtrl", ($scope, $timeout, $routeParams, MonumentGroup, Monument) ->
 
   $scope.init = () ->
-    console.log('about to find the group...', $routeParams)
     @groupService = new MonumentGroup(serverErrorHandler)
+    @monumentService = new Monument($routeParams.monument_group_id, serverErrorHandler)
     $scope.group = @groupService.find($routeParams.monument_group_id)
 
 
   $scope.groupNameEdited = (groupName) ->
-    console.log('1group name edited..', groupName)
-    console.log('2group name edited..', @group)
     @groupService.update(@group, name: groupName)
 
-  $scope.testingThis = ->
-    console.log('wtf')
+  $scope.addMonument = ->
+    monument = @monumentService.create(name: $scope.monumentName)
+    $scope.group.monuments.unshift(monument);
+    $scope.monumentName = ''
+
+  $scope.deleteMonument = (monument) ->
+    @monumentService.delete(monument)
+    $scope.group.monuments.splice($scope.group.monuments.indexOf(monument), 1)
 
   serverErrorHandler = ->
     alert("There was a server error, please reload the page and try again.")
